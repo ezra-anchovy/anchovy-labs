@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchovy Labs | Building Tools for the Agentic Era</title>
+    <meta name="description" content="Anchovy Labs builds products and services for the age of AI agents. Home of SimplifiedClaw and UrClaw.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0b;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.3);
+            --border: #27272a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2.75rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .about {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 56px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 0 auto 48px;
+        }
+
+        .portfolio-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .portfolio {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-card {
+            background: rgba(39, 39, 42, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 36px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .portfolio-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .portfolio-card p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .portfolio-card .emoji {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 32px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .portfolio {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-card {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <span class="logo-icon">🐟</span>
+            <span>Anchovy <span class="accent">Labs</span></span>
+        </div>
+        <p class="tagline">Building tools for the agentic era</p>
+        
+        <p class="about">
+            We build products and services that help teams and individuals harness the power of AI agents. 
+            From enterprise deployments to personal setups, we make autonomous AI accessible, safe, and productive.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="portfolio-label">Our Products</p>
+        <div class="portfolio">
+            <a href="https://simplifiedclaw.com" class="portfolio-card" target="_blank">
+                <div class="emoji">🏢</div>
+                <h3>SimplifiedClaw</h3>
+                <p>Enterprise AI agent deployment</p>
+            </a>
+            <a href="https://urclaw.com" class="portfolio-card" target="_blank">
+                <div class="emoji">🧑‍💻</div>
+                <h3>UrClaw</h3>
+                <p>1-on-1 setup for developers</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Anchovy Labs LLC · <a href="mailto:hello@anchovylabs.ai">hello@anchovylabs.ai</a></p>
+    </footer>
+</body>
+</html>
