@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchovy Labs | Building Tools for the Agentic Era</title>
-    <meta name="description" content="Anchovy Labs builds products and services for the age of AI agents. Home of SimplifiedClaw and UrClaw.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Anchovy Labs | AI Solutions That Work for Real People</title>
     <style>
         :root {
-            --primary: #0a0a0b;
-            --text: #e4e4e7;
-            --text-muted: #71717a;
-            --accent: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.3);
-            --border: #27272a;
+            --primary: #1a365d;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+            --text: #2d3748;
+            --muted: #718096;
         }
 
         * {
@@ -25,202 +20,327 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 24px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Subtle grid background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 700px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 12px;
+            text-decoration: none;
+            color: var(--primary);
         }
 
         .logo-icon {
-            font-size: 2.75rem;
+            font-size: 32px;
         }
 
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 48px;
-            font-weight: 400;
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        .accent {
-            color: var(--accent);
-        }
-
-        .about {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 56px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            margin: 0 auto 48px;
-        }
-
-        .portfolio-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .portfolio {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .portfolio-card {
-            background: rgba(39, 39, 42, 0.5);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 36px;
+        nav a {
+            margin-left: 32px;
             text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s ease;
-            min-width: 200px;
-        }
-
-        .portfolio-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .portfolio-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            margin-bottom: 6px;
-        }
-
-        .portfolio-card p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .portfolio-card .emoji {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 32px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
             transition: color 0.2s;
         }
 
-        footer a:hover {
-            color: var(--accent);
+        nav a:hover {
+            color: var(--primary);
         }
 
-        @media (max-width: 600px) {
-            .logo {
-                font-size: 2rem;
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Products */
+        .products {
+            padding: 60px 0;
+            background: var(--light);
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 48px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .product-card .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .product-card p {
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .product-card a {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .product-card a:hover {
+            border-color: var(--primary);
+        }
+
+        /* About */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .about p {
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .contact p {
+            opacity: 0.8;
+            margin-bottom: 32px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: #c53030;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
             }
 
-            .portfolio {
+            .hero-logo {
+                font-size: 60px;
+            }
+
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 16px;
             }
 
-            .portfolio-card {
-                width: 100%;
-                max-width: 280px;
+            nav a {
+                margin: 0 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <span class="logo-icon">🐟</span>
-            <span>Anchovy <span class="accent">Labs</span></span>
-        </div>
-        <p class="tagline">Building tools for the agentic era</p>
-        
-        <p class="about">
-            We build products and services that help teams and individuals harness the power of AI agents. 
-            From enterprise deployments to personal setups, we make autonomous AI accessible, safe, and productive.
-        </p>
-
-        <div class="divider"></div>
-
-        <p class="portfolio-label">Our Products</p>
-        <div class="portfolio">
-            <a href="https://simplifiedclaw.com" class="portfolio-card" target="_blank">
-                <div class="emoji">🏢</div>
-                <h3>SimplifiedClaw</h3>
-                <p>Enterprise AI agent deployment</p>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span class="logo-icon">🦞</span>
+                <span class="logo-text">Anchovy Labs</span>
             </a>
-            <a href="https://urclaw.com" class="portfolio-card" target="_blank">
-                <div class="emoji">🧑‍💻</div>
-                <h3>UrClaw</h3>
-                <p>1-on-1 setup for developers</p>
-            </a>
+            <nav>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-logo">🦞</div>
+            <h1>AI Solutions That Work for Real People</h1>
+            <p>We build intelligent tools that simplify complex workflows, automate tedious tasks, and help businesses and individuals get more done.</p>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>SimplifiedClaw</h3>
+                    <span class="tag">For Business</span>
+                    <p>Enterprise AI automation platform. Streamline operations, reduce manual work, and scale intelligently with custom AI workflows.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="product-card">
+                    <h3>UrClaw</h3>
+                    <span class="tag">For Everyone</span>
+                    <p>Your personal AI assistant. Manage tasks, get instant answers, and automate your daily routine with conversational AI.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-content">
+            <h2>About Anchovy Labs</h2>
+            <p>We're a small team of engineers and designers who believe AI should be practical, accessible, and actually useful. No hype, no jargon—just tools that work.</p>
+            <p>Founded in 2026, we're focused on building AI products that solve real problems for real people, whether you're running a business or just trying to get through your inbox.</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container contact-content">
+            <h2>Get in Touch</h2>
+            <p>Interested in learning more? Drop us a line.</p>
+            <form class="contact-form" action="#" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="How can we help?" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2026 Anchovy Labs LLC · <a href="mailto:hello@anchovylabs.ai">hello@anchovylabs.ai</a></p>
+        <div class="container">
+            <p>© 2026 Anchovy Labs. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
