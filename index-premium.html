@@ -1,0 +1,726 @@
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0d0d0d;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --accent: #c9a962;
+            --accent-hover: #dfc07a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #555555;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --status-green: #4ade80;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.9), rgba(10,10,10,0));
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 16px 60px;
+            background: rgba(10,10,10,0.95);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--status-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--status-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 60px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('assets-swarm/digital-exit-strategy/concept_05.png') center/cover no-repeat;
+            opacity: 0.3;
+            filter: grayscale(1) brightness(0.5);
+            transform: scale(1.1);
+            animation: zoom-slow 20s infinite alternate;
+        }
+
+        @keyframes zoom-slow {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 80%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: 24px;
+            display: block;
+            opacity: 0;
+            animation: fade-up 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            line-height: 1;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fade-up 1s ease 0.2s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .hero h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.8s ease 1s;
+        }
+
+        .hero h1 em.active::after {
+            transform: scaleX(1);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fade-up 1s ease 0.4s forwards;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            opacity: 0;
+            animation: fade-up 1s ease 0.6s forwards;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 18px 44px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Sections */
+        section {
+            padding: 160px 60px;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            text-align: center;
+        }
+
+        .section-header span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 300;
+        }
+
+        /* Capabilities Grid */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .capability-item {
+            display: flex;
+            gap: 40px;
+            padding: 60px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            transition: all 0.5s ease;
+        }
+
+        .capability-item:hover {
+            border-color: rgba(201, 169, 98, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .cap-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .cap-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        .cap-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Feature Section */
+        .feature-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-image {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.1);
+        }
+
+        .feature-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 32px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+
+        .feature-list li {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .feature-list li::before {
+            content: '—';
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 120px 60px 60px;
+            border-top: 1px solid var(--border);
+            background: #080808;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            max-width: 320px;
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 100px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Gallery Overrides */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 300px;
+            gap: 12px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.7s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .gallery-item.v { grid-row: span 2; }
+        .gallery-item.h { grid-column: span 2; }
+        .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+
+        @media (max-width: 1200px) {
+            .capabilities-grid { grid-template-columns: 1fr; }
+            .feature-split { grid-template-columns: 1fr; gap: 60px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="#" class="logo">ANCHOVY<span>LABS</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#intelligence">Intelligence</a></li>
+                <li><a href="#sovereignty">Sovereignty</a></li>
+                <li><a href="#labs">Labs</a></li>
+            </ul>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                Ezra: Online
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tagline">Autonomous Strategic Intelligence</span>
+            <h1>Architecting <em>Agentic</em> Systems</h1>
+            <p>We build high-stakes autonomous systems for operators who value precision, privacy, and performance. Beyond automation—this is agency.</p>
+            <div class="cta-group">
+                <a href="mailto:info@anchovylab.com" class="btn btn-primary">Establish Contact</a>
+                <a href="#intelligence" class="btn btn-secondary">Explore Systems</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="intelligence">
+        <div class="section-header">
+            <span>Core Systems</span>
+            <h2>Orchestrating Autonomy</h2>
+            <p>Our systems don't just follow rules. They navigate goals, manage state, and execute with strategic intent.</p>
+        </div>
+        <div class="capabilities-grid">
+            <div class="capability-item">
+                <div class="cap-icon">01</div>
+                <div class="cap-content">
+                    <h3>Agentic Chiefs of Staff</h3>
+                    <p>Always-on intelligence partners that monitor your interests, synthesize information, and execute complex workflows autonomously across your digital stack.</p>
+                </div>
+            </div>
+            <div class="capability-item">
+                <div class="cap-icon">02</div>
+                <div class="cap-content">
+                    <h3>Cognitive Infrastructure</h3>
+                    <p>Building the memory layers and decision engines that allow AI to move from one-shot prompts to long-term operational continuity.</p>
+                </div>
+            </div>
+            <div class="capability-item">
+                <div class="cap-icon">03</div>
+                <div class="cap-content">
+                    <h3>Quantified Strategy</h3>
+                    <p>Precision-engineered models for high-stakes environments—from predictive market analysis to institutional risk management.</p>
+                </div>
+            </div>
+            <div class="capability-item">
+                <div class="cap-icon">04</div>
+                <div class="cap-content">
+                    <h3>Autonomous Outreach</h3>
+                    <p>Agentic lead generation and business development systems that identify, enrich, and engage prospects with zero human intervention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sovereignty" style="background: #080808;">
+        <div class="feature-split">
+            <div class="feature-image">
+                <img src="assets-swarm/digital-exit-strategy/001-a-matte-black-monolith-casting-a-sharp-g.png" alt="Sovereign Monolith">
+            </div>
+            <div class="feature-content">
+                <span>The Sovereign Protocol</span>
+                <h2>Privacy is the <br>Highest Luxury.</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 40px; font-weight: 300; font-size: 1.1rem;">In an era of extractive intelligence, we build for the exit. Our systems are designed to live on your infrastructure, serving only your interests.</p>
+                <ul class="feature-list">
+                    <li>Local-first execution architectures</li>
+                    <li>Zero-knowledge memory synchronization</li>
+                    <li>Full operational auditability</li>
+                    <li>Strategic platform independence</li>
+                </ul>
+                <a href="mailto:info@anchovylab.com" class="btn btn-secondary">Request a Briefing</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="labs">
+        <div class="section-header">
+            <span>Anchovy Labs</span>
+            <h2>Future Frontiers</h2>
+            <p>We are currently developing a suite of sovereign mobile applications designed to bring agentic intelligence to your most personal environments.</p>
+        </div>
+        <div class="capabilities-grid" style="margin-bottom: 80px;">
+            <div class="capability-item">
+                <div class="cap-content">
+                    <span style="color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 10px; display: block;">Coming Q3 2026</span>
+                    <h3>The Citadel</h3>
+                    <p>A local-first sovereign Chief of Staff. Encrypted memory, private tool integration, and absolute data autonomy in your pocket.</p>
+                </div>
+            </div>
+            <div class="capability-item">
+                <div class="cap-content">
+                    <span style="color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 10px; display: block;">In Development</span>
+                    <h3>Black Swan</h3>
+                    <p>The Bloomberg Terminal for your quantified life. High-fidelity tail risk management for health, wealth, and time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-grid">
+            <!-- Digital Exit Strategy: Phone Shattering Series -->
+            <div class="gallery-item big">
+                <img src="assets-swarm/digital-exit-strategy/concept_05.png" alt="Phone Shattering I">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/digital-exit-strategy/concept_03.png" alt="Phone Shattering II">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/digital-exit-strategy/concept_01.png" alt="Phone Shattering III">
+            </div>
+            
+            <!-- Digital Exit Strategy: Monolith & Fiber -->
+            <div class="gallery-item v">
+                <img src="assets-swarm/digital-exit-strategy/001-a-matte-black-monolith-casting-a-sharp-g.png" alt="The Monolith">
+            </div>
+            <div class="gallery-item h">
+                <img src="assets-swarm/digital-exit-strategy/001-a-single-fiber-optic-cable-cleanly-sever.png" alt="Severed Connection">
+            </div>
+            
+            <!-- Digital Exit Strategy: Breaking Pottery -->
+            <div class="gallery-item">
+                <img src="assets-swarm/digital-exit-strategy/nano_v11.png" alt="Breaking Pottery I">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/digital-exit-strategy/nano_v12.png" alt="Breaking Pottery II">
+            </div>
+            
+            <!-- Cognitive Fortress -->
+            <div class="gallery-item big">
+                <img src="assets-swarm/cognitive-fortress/001-cognitive-fortress-visual-a-translucent-.png" alt="Cognitive Fortress">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/cognitive-fortress/nano_v16.png" alt="Fortress I">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/cognitive-fortress/nano_v17.png" alt="Fortress II">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/cognitive-fortress/concept_06.png" alt="Fortress III">
+            </div>
+            
+            <!-- Beyond Stoicism -->
+            <div class="gallery-item h">
+                <img src="assets-swarm/beyond-stoicism/concept_01.png" alt="Stoic I">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/beyond-stoicism/concept_02.png" alt="Stoic II">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/beyond-stoicism/concept_03.png" alt="Stoic III">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/beyond-stoicism/concept_04.png" alt="Stoic IV">
+            </div>
+            <div class="gallery-item">
+                <img src="assets-swarm/beyond-stoicism/concept_05.png" alt="Stoic V">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>ANCHOVY<span>LABS</span></h2>
+                <p>Strategic agentic intelligence for discerning operators. Based in New York. Built for the world.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Ecosystem</h4>
+                <ul>
+                    <li><a href="https://urclaw.com">UrClaw</a></li>
+                    <li><a href="https://simplifiedclaw.com">SimplifiedClaw</a></li>
+                    <li><a href="#">The Citadel</a></li>
+                    <li><a href="#">Black Swan</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Strategic</h4>
+                <ul>
+                    <li><a href="mailto:info@anchovylab.com">Contact</a></li>
+                    <li><a href="https://twitter.com/ezraanchovy">X / Twitter</a></li>
+                    <li><a href="https://github.com/ezra-anchovy">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Protocol</a></li>
+                    <li><a href="#">Terms of Engagement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Anchovy Labs.</span>
+            <span>Est. MMXXVI • NYC</span>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Trigger underline animation
+        setTimeout(() => {
+            document.querySelector('.hero h1 em').classList.add('active');
+        }, 1200);
+    </script>
+</body>
+</html>
