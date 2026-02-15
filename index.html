@@ -3,11 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchovy Labs — Applied Intelligence Research</title>
-    <meta name="description" content="A productization research lab at the intersection of autonomous systems, quantitative reasoning, and applied intelligence.">
+    
+    <!-- Primary Meta Tags -->
+    <title>Anchovy Labs — Intelligence That Ships</title>
+    <meta name="title" content="Anchovy Labs — Intelligence That Ships">
+    <meta name="description" content="Applied AI research lab building autonomous systems that solve real problems. Payment recovery, task triage, agent orchestration. Products in production, not papers in journals.">
+    <link rel="canonical" href="https://anchovylabs.ai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anchovylabs.ai">
+    <meta property="og:title" content="Anchovy Labs — Intelligence That Ships">
+    <meta property="og:description" content="Applied AI research lab building autonomous systems that solve real problems. Payment recovery, task triage, agent orchestration.">
+    <meta property="og:image" content="https://anchovylabs.ai/icons/concept_01.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anchovylabs.ai">
+    <meta property="twitter:title" content="Anchovy Labs — Intelligence That Ships">
+    <meta property="twitter:description" content="Applied AI research lab building autonomous systems that solve real problems.">
+    <meta property="twitter:image" content="https://anchovylabs.ai/icons/concept_01.png">
+    <meta name="twitter:site" content="@EzraAnchovy">
+    
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Anchovy Labs",
+      "url": "https://anchovylabs.ai",
+      "description": "Applied intelligence research lab building autonomous systems and sovereign infrastructure.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York City",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://twitter.com/EzraAnchovy"
+      ],
+      "logo": "https://anchovylabs.ai/icons/concept_01.png",
+      "foundingDate": "2025",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Products",
+        "itemListElement": [
+          {
+            "@type": "Product",
+            "name": "RevenueBack",
+            "description": "Payment recovery for SaaS. Stop losing 5-15% of revenue to failed payments.",
+            "url": "https://revenueback.com",
+            "brand": {
+              "@type": "Organization",
+              "name": "Anchovy Labs"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "Solo Chief",
+            "description": "Strategic task triage for solopreneurs. AI that tells you what NOT to do.",
+            "url": "https://solochief.ai",
+            "brand": {
+              "@type": "Organization",
+              "name": "Anchovy Labs"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "OpenClaw",
+            "description": "Autonomous agent orchestration. Build swarms that ship while you sleep.",
+            "url": "https://openclaw.ai",
+            "brand": {
+              "@type": "Organization",
+              "name": "Anchovy Labs"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -89,8 +171,15 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a:focus {
             color: var(--accent-gold);
+            outline: none;
+        }
+
+        .nav-links a:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 4px;
         }
 
         /* Hero Section */
@@ -131,7 +220,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .hero h1 {
@@ -148,13 +237,24 @@
             font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
-            max-width: 600px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 1s ease forwards;
             animation-delay: 0.5s;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.7s;
         }
 
         .cta-button {
@@ -169,21 +269,36 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards;
-            animation-delay: 0.7s;
         }
 
-        .cta-button:hover {
+        .cta-button:hover,
+        .cta-button:focus {
             background: var(--accent-gold);
             color: var(--bg-primary);
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
+            outline: none;
         }
 
-        /* Research Section */
-        .research {
+        .cta-button:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 4px;
+        }
+
+        .cta-button.secondary {
+            border-color: var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+        .cta-button.secondary:hover,
+        .cta-button.secondary:focus {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: transparent;
+        }
+
+        /* Products Section */
+        .products {
             padding: 8rem 4rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -203,6 +318,86 @@
             color: var(--text-secondary);
             max-width: 500px;
             margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover,
+        .product-card:focus-within {
+            background: var(--glass-hover);
+            border-color: var(--accent-gold-dim);
+            transform: translateY(-5px);
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .product-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .product-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-link:hover,
+        .product-link:focus {
+            color: var(--text-primary);
+            gap: 0.75rem;
+            outline: none;
+        }
+
+        .product-link:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 4px;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Research Section */
+        .research {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
         }
 
         .research-grid {
@@ -228,7 +423,8 @@
             transform: translateY(0);
         }
 
-        .research-card:hover {
+        .research-card:hover,
+        .research-card:focus-within {
             background: var(--glass-hover);
             border-color: var(--accent-gold-dim);
             transform: translateY(-5px);
@@ -246,7 +442,7 @@
             line-height: 1.7;
         }
 
-        /* Philosophy Section */
+        /* Philosophy Section (Social Proof) */
         .philosophy {
             position: relative;
             display: flex;
@@ -323,9 +519,9 @@
             border-top: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .footer-brand {
@@ -349,10 +545,25 @@
             font-size: 0.875rem;
         }
 
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
         .footer-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
         .footer-links a {
@@ -362,8 +573,16 @@
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
+        .footer-links a:hover,
+        .footer-links a:focus {
             color: var(--accent-gold);
+            outline: none;
+        }
+
+        .footer-links a:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 4px;
+            border-radius: 4px;
         }
 
         .footer-copyright {
@@ -384,12 +603,30 @@
             }
         }
 
+        /* Skip to main content link (accessibility) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            z-index: 2000;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             nav {
                 padding: 1.25rem 2rem;
             }
 
+            .products,
             .research {
                 padding: 6rem 2rem;
             }
@@ -418,12 +655,10 @@
 
             footer {
                 padding: 3rem 2rem;
-                flex-direction: column;
-                text-align: center;
             }
 
             .footer-brand {
-                align-items: center;
+                width: 100%;
             }
         }
 
@@ -440,14 +675,17 @@
                 padding: 8rem 1.5rem 4rem;
             }
 
+            .products,
             .research {
                 padding: 4rem 1.5rem;
             }
 
+            .products-grid,
             .research-grid {
                 grid-template-columns: 1fr;
             }
 
+            .product-card,
             .research-card {
                 padding: 2rem;
             }
@@ -458,6 +696,10 @@
 
             .philosophy-list li {
                 font-size: 0.9375rem;
+            }
+
+            footer {
+                flex-direction: column;
             }
         }
 
@@ -478,18 +720,29 @@
                 padding: 7rem 1.25rem 3rem;
             }
 
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
             .cta-button {
                 padding: 0.875rem 2rem;
                 font-size: 0.8125rem;
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Skip to main content (accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">ANCHOVY <span>LABS</span></a>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="#" class="logo" aria-label="Anchovy Labs Home">ANCHOVY <span>LABS</span></a>
         <ul class="nav-links">
+            <li><a href="#products">Products</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="#approach">Approach</a></li>
             <li><a href="mailto:info@anchovylabs.ai">Contact</a></li>
@@ -497,46 +750,83 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
+    <section class="hero" id="main-content" role="banner">
+        <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-content">
-            <h1>Applied Intelligence Research</h1>
-            <p>Building autonomous systems for high-stakes environments.</p>
-            <a href="mailto:info@anchovylabs.ai" class="cta-button">Inquire</a>
+            <h1>Intelligence That Ships</h1>
+            <p>From research to revenue. We build autonomous systems that solve real problems — payment recovery, task triage, agent orchestration. Products in production, not papers in journals.</p>
+            <div class="cta-group">
+                <a href="#products" class="cta-button">Explore Our Work</a>
+                <a href="mailto:info@anchovylabs.ai" class="cta-button secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products" role="region" aria-labelledby="products-heading">
+        <div class="section-header">
+            <h2 id="products-heading">From Research to Revenue</h2>
+            <p>Products shipping from the lab</p>
+        </div>
+        <div class="products-grid">
+            <article class="product-card">
+                <h3>RevenueBack</h3>
+                <p>Payment recovery for SaaS. Stop losing 5-15% of revenue to failed payments. Intelligent retry orchestration that actually works.</p>
+                <a href="https://revenueback.com" class="product-link" target="_blank" rel="noopener noreferrer">
+                    Learn More <span aria-hidden="true">→</span>
+                    <span class="sr-only">(opens in new tab)</span>
+                </a>
+            </article>
+            <article class="product-card">
+                <h3>Solo Chief</h3>
+                <p>Strategic task triage for solopreneurs. AI that tells you what NOT to do. Focus on what matters, delegate or delete the rest.</p>
+                <a href="https://solochief.ai" class="product-link" target="_blank" rel="noopener noreferrer">
+                    Learn More <span aria-hidden="true">→</span>
+                    <span class="sr-only">(opens in new tab)</span>
+                </a>
+            </article>
+            <article class="product-card">
+                <h3>OpenClaw</h3>
+                <p>Autonomous agent orchestration. Build swarms that ship while you sleep. Multi-agent coordination at scale with full auditability.</p>
+                <a href="https://openclaw.ai" class="product-link" target="_blank" rel="noopener noreferrer">
+                    Learn More <span aria-hidden="true">→</span>
+                    <span class="sr-only">(opens in new tab)</span>
+                </a>
+            </article>
         </div>
     </section>
 
     <!-- Research Section -->
-    <section class="research" id="research">
+    <section class="research" id="research" role="region" aria-labelledby="research-heading">
         <div class="section-header">
-            <h2>Research Areas</h2>
+            <h2 id="research-heading">Research Areas</h2>
             <p>Our work spans the architecture of autonomous decision-making.</p>
         </div>
         <div class="research-grid">
-            <div class="research-card">
+            <article class="research-card">
                 <h3>Autonomous Decision Architecture</h3>
                 <p>Systems that maintain long-term operational context and act with strategic intent across extended time horizons.</p>
-            </div>
-            <div class="research-card">
+            </article>
+            <article class="research-card">
                 <h3>Quantitative Signal Processing</h3>
                 <p>Real-time synthesis of heterogeneous data streams for high-fidelity decision support in complex environments.</p>
-            </div>
-            <div class="research-card">
+            </article>
+            <article class="research-card">
                 <h3>Sovereign Infrastructure</h3>
                 <p>Local-first execution with zero-knowledge synchronization. Privacy is architectural, not aspirational.</p>
-            </div>
-            <div class="research-card">
+            </article>
+            <article class="research-card">
                 <h3>Agentic Coordination</h3>
                 <p>Multi-agent orchestration at scale with verifiable compliance and auditable decision trails.</p>
-            </div>
+            </article>
         </div>
     </section>
 
-    <!-- Philosophy Section -->
-    <section class="philosophy" id="approach">
-        <div class="philosophy-image"></div>
+    <!-- Philosophy Section (Social Proof) -->
+    <section class="philosophy" id="approach" role="region" aria-labelledby="philosophy-heading">
+        <div class="philosophy-image" role="img" aria-label="Conceptual illustration of autonomous systems"></div>
         <div class="philosophy-content">
-            <h2>Ancient Rigor,<br>Modern Architecture</h2>
+            <h2 id="philosophy-heading">Ancient Rigor,<br>Modern Architecture</h2>
             <ul class="philosophy-list">
                 <li>We build systems that earn trust through competence, not configuration.</li>
                 <li>Privacy is architectural, not aspirational.</li>
@@ -547,16 +837,31 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-brand">
             <div class="footer-logo">ANCHOVY <span>LABS</span></div>
             <div class="footer-location">New York City</div>
         </div>
-        <div class="footer-links">
-            <a href="mailto:info@anchovylabs.ai">info@anchovylabs.ai</a>
+        
+        <div class="footer-section">
+            <h4>Products</h4>
+            <nav class="footer-links" aria-label="Product links">
+                <a href="https://revenueback.com" target="_blank" rel="noopener noreferrer">RevenueBack</a>
+                <a href="https://solochief.ai" target="_blank" rel="noopener noreferrer">Solo Chief</a>
+                <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer">OpenClaw</a>
+            </nav>
         </div>
+        
+        <div class="footer-section">
+            <h4>Connect</h4>
+            <nav class="footer-links" aria-label="Social and contact links">
+                <a href="mailto:info@anchovylabs.ai">info@anchovylabs.ai</a>
+                <a href="https://twitter.com/EzraAnchovy" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+            </nav>
+        </div>
+        
         <div class="footer-copyright">
-            © 2026 Anchovy Labs
+            © 2026 Anchovy Labs. All rights reserved.
         </div>
     </footer>
 
@@ -578,8 +883,8 @@
             });
         }, observerOptions);
 
-        // Observe research cards
-        document.querySelectorAll('.research-card').forEach(card => {
+        // Observe product and research cards
+        document.querySelectorAll('.product-card, .research-card').forEach(card => {
             observer.observe(card);
         });
 
