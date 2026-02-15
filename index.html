@@ -3,342 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchovy Labs | AI Solutions That Work for Real People</title>
+    <title>Anchovy Labs — Applied Intelligence Research</title>
+    <meta name="description" content="A productization research lab at the intersection of autonomous systems, quantitative reasoning, and applied intelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a365d;
-            --accent: #e53e3e;
-            --light: #f7fafc;
-            --text: #2d3748;
-            --muted: #718096;
-        }
-
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-gold: #c9a962;
+            --accent-gold-dim: rgba(201, 169, 98, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.06);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
         }
 
-        /* Header */
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .header-content {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), transparent);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        .logo-icon {
-            font-size: 32px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        nav a {
-            margin-left: 32px;
-            text-decoration: none;
-            color: var(--muted);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
             font-weight: 500;
-            transition: color 0.2s;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            text-decoration: none;
         }
 
-        nav a:hover {
-            color: var(--primary);
+        .logo span {
+            color: var(--accent-gold);
         }
 
-        /* Hero */
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 100px 0 80px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 6rem 2rem;
+            overflow: hidden;
         }
 
-        .hero-logo {
-            font-size: 80px;
-            margin-bottom: 24px;
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets-swarm/beyond-stoicism/concept_01.png');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) brightness(0.4);
+            opacity: 0.35;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.3s;
         }
 
         .hero p {
-            font-size: 20px;
-            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.5s;
         }
 
-        /* Products */
-        .products {
-            padding: 60px 0;
-            background: var(--light);
-        }
-
-        .products h2 {
-            text-align: center;
-            font-size: 28px;
-            color: var(--primary);
-            margin-bottom: 48px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .product-card {
-            background: white;
-            padding: 40px 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-        }
-
-        .product-card h3 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .product-card .tag {
+        .cta-button {
             display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .product-card p {
-            color: var(--muted);
-            margin-bottom: 24px;
-        }
-
-        .product-card a {
-            display: inline-block;
-            color: var(--primary);
-            font-weight: 600;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
             text-decoration: none;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 2px;
-            transition: border-color 0.2s;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.7s;
         }
 
-        .product-card a:hover {
-            border-color: var(--primary);
+        .cta-button:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
         }
 
-        /* About */
-        .about {
-            padding: 80px 0;
-        }
-
-        .about-content {
-            max-width: 700px;
+        /* Research Section */
+        .research {
+            padding: 8rem 4rem;
+            max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .section-header {
             text-align: center;
+            margin-bottom: 4rem;
         }
 
-        .about h2 {
-            font-size: 28px;
-            color: var(--primary);
-            margin-bottom: 24px;
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
         }
 
-        .about p {
-            color: var(--muted);
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 80px 0;
-            background: var(--primary);
-            color: white;
-        }
-
-        .contact-content {
+        .section-header p {
+            color: var(--text-secondary);
             max-width: 500px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .contact h2 {
-            font-size: 28px;
-            margin-bottom: 16px;
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .contact p {
-            opacity: 0.8;
-            margin-bottom: 32px;
+        .research-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
+        .research-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .contact-form textarea {
-            height: 120px;
-            resize: vertical;
+        .research-card:hover {
+            background: var(--glass-hover);
+            border-color: var(--accent-gold-dim);
+            transform: translateY(-5px);
         }
 
-        .contact-form button {
-            width: 100%;
-            padding: 16px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
+        .research-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .contact-form button:hover {
-            background: #c53030;
+        .research-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            position: relative;
+            display: flex;
+            min-height: 80vh;
+        }
+
+        .philosophy-image {
+            flex: 1;
+            background-image: url('assets-swarm/beyond-stoicism/concept_02.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .philosophy-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 30%;
+            background: linear-gradient(to right, transparent, var(--bg-primary));
+        }
+
+        .philosophy-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 6rem;
+            background: var(--bg-primary);
+        }
+
+        .philosophy-content h2 {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .philosophy-list {
+            list-style: none;
+        }
+
+        .philosophy-list li {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .philosophy-list li:last-child {
+            border-bottom: none;
+        }
+
+        .philosophy-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-gold);
+            border-radius: 50%;
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
+            padding: 4rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+
+        .footer-location {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-copyright {
+            width: 100%;
             text-align: center;
-            color: var(--muted);
-            font-size: 14px;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.25rem 2rem;
+            }
+
+            .research {
+                padding: 6rem 2rem;
+            }
+
+            .philosophy {
+                flex-direction: column;
+            }
+
+            .philosophy-image {
+                min-height: 400px;
+            }
+
+            .philosophy-image::after {
+                top: auto;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 40%;
+                background: linear-gradient(to top, var(--bg-primary), transparent);
+            }
+
+            .philosophy-content {
+                padding: 3rem 2rem;
+            }
+
+            footer {
+                padding: 3rem 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-brand {
+                align-items: center;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
+            .nav-links {
+                gap: 1.5rem;
             }
 
-            .hero-logo {
-                font-size: 60px;
+            .nav-links a {
+                font-size: 0.8125rem;
             }
 
-            .header-content {
-                flex-direction: column;
-                gap: 16px;
+            .hero {
+                padding: 8rem 1.5rem 4rem;
             }
 
-            nav a {
-                margin: 0 16px;
+            .research {
+                padding: 4rem 1.5rem;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-card {
+                padding: 2rem;
+            }
+
+            .philosophy-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .philosophy-list li {
+                font-size: 0.9375rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 0.8125rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo">
-                <span class="logo-text">Anchovy Labs</span>
-            </a>
-            <nav>
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">ANCHOVY <span>LABS</span></a>
+        <ul class="nav-links">
+            <li><a href="#research">Research</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="mailto:ezra@anchovylabs.ai">Contact</a></li>
+        </ul>
+    </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>AI Solutions That Work for Real People</h1>
-            <p>We build intelligent tools that simplify complex workflows, automate tedious tasks, and help businesses and individuals get more done.</p>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Applied Intelligence Research</h1>
+            <p>Building autonomous systems for high-stakes environments.</p>
+            <a href="mailto:ezra@anchovylabs.ai" class="cta-button">Inquire</a>
         </div>
     </section>
 
-    <section class="products" id="products">
-        <div class="container">
-            <h2>Our Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>SimplifiedClaw</h3>
-                    <span class="tag">For Business</span>
-                    <p>Enterprise AI automation platform. Streamline operations, reduce manual work, and scale intelligently with custom AI workflows.</p>
-                    <a href="#">Learn More →</a>
-                </div>
-                <div class="product-card">
-                    <h3>UrClaw</h3>
-                    <span class="tag">For Everyone</span>
-                    <p>Your personal AI assistant. Manage tasks, get instant answers, and automate your daily routine with conversational AI.</p>
-                    <a href="#">Learn More →</a>
-                </div>
+    <!-- Research Section -->
+    <section class="research" id="research">
+        <div class="section-header">
+            <h2>Research Areas</h2>
+            <p>Our work spans the architecture of autonomous decision-making.</p>
+        </div>
+        <div class="research-grid">
+            <div class="research-card">
+                <h3>Autonomous Decision Architecture</h3>
+                <p>Systems that maintain long-term operational context and act with strategic intent across extended time horizons.</p>
+            </div>
+            <div class="research-card">
+                <h3>Quantitative Signal Processing</h3>
+                <p>Real-time synthesis of heterogeneous data streams for high-fidelity decision support in complex environments.</p>
+            </div>
+            <div class="research-card">
+                <h3>Sovereign Infrastructure</h3>
+                <p>Local-first execution with zero-knowledge synchronization. Privacy is architectural, not aspirational.</p>
+            </div>
+            <div class="research-card">
+                <h3>Agentic Coordination</h3>
+                <p>Multi-agent orchestration at scale with verifiable compliance and auditable decision trails.</p>
             </div>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <div class="container about-content">
-            <h2>About Anchovy Labs</h2>
-            <p>We're a small team of engineers and designers who believe AI should be practical, accessible, and actually useful. No hype, no jargon—just tools that work.</p>
-            <p>Founded in 2026, we're focused on building AI products that solve real problems for real people, whether you're running a business or just trying to get through your inbox.</p>
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="approach">
+        <div class="philosophy-image"></div>
+        <div class="philosophy-content">
+            <h2>Ancient Rigor,<br>Modern Architecture</h2>
+            <ul class="philosophy-list">
+                <li>We build systems that earn trust through competence, not configuration.</li>
+                <li>Privacy is architectural, not aspirational.</li>
+                <li>Every system we ship operates under adversarial assumptions.</li>
+                <li>We measure success in decisions made, not tokens processed.</li>
+            </ul>
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <div class="container contact-content">
-            <h2>Get in Touch</h2>
-            <p>Interested in learning more? Drop us a line.</p>
-            <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="How can we help?" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2026 Anchovy Labs. All rights reserved.</p>
+        <div class="footer-brand">
+            <div class="footer-logo">ANCHOVY <span>LABS</span></div>
+            <div class="footer-location">New York</div>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:ezra@anchovylabs.ai">ezra@anchovylabs.ai</a>
+            <a href="https://github.com/ezra-anchovy" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://x.com/ezraanchovy" target="_blank" rel="noopener">X</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 Anchovy Labs
         </div>
     </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe research cards
+        document.querySelectorAll('.research-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
