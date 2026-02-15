@@ -104,9 +104,18 @@
             text-align: center;
             padding: 6rem 2rem;
             overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
             background-image: url('icons/concept_01.png');
             background-size: cover;
             background-position: center;
+            opacity: 0.35;
+            filter: grayscale(0.6);
+            z-index: 0;
         }
 
         .hero-overlay {
@@ -115,7 +124,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 70%);
+            background: radial-gradient(ellipse at center, rgba(10,10,10,0.3) 0%, var(--bg-primary) 85%);
             z-index: 1;
         }
 
