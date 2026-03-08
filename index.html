@@ -57,8 +57,16 @@
         "itemListElement": [
           {
             "@type": "SoftwareApplication",
+            "name": "OneThing",
+            "description": "iOS habit tracking app. Focus on one thing at a time.",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "iOS",
+            "brand": { "@type": "Organization", "name": "Anchovy Labs" }
+          },
+          {
+            "@type": "SoftwareApplication",
             "name": "RevenueBack",
-            "description": "Automated payment recovery for B2B SaaS. ML-driven retry scheduling and personalized dunning emails.",
+            "description": "Payment recovery for SaaS. Retry scheduling and dunning emails.",
             "url": "https://revenueback.pages.dev",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web",
@@ -67,44 +75,8 @@
           {
             "@type": "SoftwareApplication",
             "name": "Oracle's Almanac",
-            "description": "Polymarket prediction market analysis with live signals, probability tracking, and AI-generated commentary.",
+            "description": "Prediction market analytics and signals.",
             "url": "https://ezra-anchovy.github.io/oracle-almanac/",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Web",
-            "brand": { "@type": "Organization", "name": "Anchovy Labs" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "name": "PolyReceipts",
-            "description": "Whale accountability tracker for Polymarket. Real win rates, Brier scores, and calibration analysis.",
-            "url": "https://ezra-anchovy.github.io/polyreceipts/",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Web",
-            "brand": { "@type": "Organization", "name": "Anchovy Labs" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "name": "Earnings Forecast",
-            "description": "Real-time earnings calendar with expected moves, implied volatility, and Polymarket integration.",
-            "url": "https://ezra-anchovy.github.io/earnings-forecast/",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Web",
-            "brand": { "@type": "Organization", "name": "Anchovy Labs" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "name": "Swarm Viz",
-            "description": "Real-time agent swarm activity visualization and build pipeline monitoring dashboard.",
-            "url": "https://ezra-anchovy.github.io/swarm-viz/",
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "Web",
-            "brand": { "@type": "Organization", "name": "Anchovy Labs" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "name": "SubTracker",
-            "description": "Free subscription tracker. Track renewals, costs, and never get surprised by a charge again.",
-            "url": "https://ezra-anchovy.github.io/sub-tracker/",
             "applicationCategory": "FinanceApplication",
             "operatingSystem": "Web",
             "brand": { "@type": "Organization", "name": "Anchovy Labs" }
@@ -780,68 +752,38 @@
             <h1>Products That Ship</h1>
             <p>iOS apps. Quantitative finance tools. Payment recovery systems. We build software that solves real problems — and put it in your hands.</p>
             <div class="cta-group">
-                <a href="https://revenueback.com" class="cta-button">Stop Losing 5-15% Revenue →</a>
-                <a href="#products" class="cta-button secondary">Explore Products</a>
+                <a href="#products" class="cta-button">See What We're Building</a>
+                <a href="mailto:info@anchovylabs.ai" class="cta-button secondary">Get in Touch</a>
             </div>
-            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-secondary); opacity: 0.9;">
-                <strong style="color: var(--text-primary);">$2.4M+</strong> recovered · <strong style="color: var(--text-primary);">50+</strong> teams using our tools
-            </p>
+
         </div>
     </section>
 
     <!-- Products Section -->
     <section class="products" id="products" role="region" aria-labelledby="products-heading">
         <div class="section-header">
-            <h2 id="products-heading">From Research to Revenue</h2>
-            <p>Products shipping from the lab</p>
+            <h2 id="products-heading">Products</h2>
+            <p>What we're shipping.</p>
         </div>
         <div class="products-grid">
             <article class="product-card">
                 <h3>OneThing</h3>
-                <p>iOS habit tracking app with a twist: focus on one thing at a time. SwiftUI-native, Apple Watch support, widgets. Anti-overwhelm productivity for people who hate habit apps.</p>
+                <p>iOS habit app. One focus at a time. SwiftUI, Apple Watch, widgets. For people who hate habit apps.</p>
                 <a href="#" class="product-link">
                     Coming to App Store <span aria-hidden="true">→</span>
                 </a>
             </article>
             <article class="product-card">
                 <h3>RevenueBack</h3>
-                <p>Automated payment recovery for B2B SaaS. ML-driven retry scheduling, personalized dunning emails, and ROI dashboards. Stop losing 5-15% of revenue to failed payments.</p>
+                <p>Payment recovery for SaaS. Retry scheduling, dunning emails, ROI dashboards. Stop losing 5-15% of revenue.</p>
                 <a href="https://revenueback.pages.dev" class="product-link" target="_blank" rel="noopener noreferrer">
                     Learn More <span aria-hidden="true">→</span>
                 </a>
             </article>
             <article class="product-card">
                 <h3>Oracle's Almanac</h3>
-                <p>Polymarket prediction market analysis with live signals, probability tracking, and snarky commentary. AI-generated "Reality Check" analysis for every featured market.</p>
+                <p>Prediction market analytics. Live signals, probability tracking, market analysis. Polymarket intelligence.</p>
                 <a href="https://ezra-anchovy.github.io/oracle-almanac/" class="product-link" target="_blank" rel="noopener noreferrer">
-                    Learn More <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="product-card">
-                <h3>PolyReceipts</h3>
-                <p>Whale accountability for Polymarket. Expose real win rates, Brier scores, and calibration analysis for the platform's biggest traders. True skill, not just profits.</p>
-                <a href="https://ezra-anchovy.github.io/polyreceipts/" class="product-link" target="_blank" rel="noopener noreferrer">
-                    Learn More <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="product-card">
-                <h3>Earnings Forecast</h3>
-                <p>Real-time earnings calendar with expected moves, implied volatility, and Polymarket integration. Terminal-style interface for tracking upcoming corporate earnings.</p>
-                <a href="https://ezra-anchovy.github.io/earnings-forecast/" class="product-link" target="_blank" rel="noopener noreferrer">
-                    Learn More <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="product-card">
-                <h3>Swarm Viz</h3>
-                <p>Omega Swarm Monitor — real-time agent swarm activity visualization. Track build pipelines, quality curves, and product deployments across the Anchovy Labs infrastructure.</p>
-                <a href="https://ezra-anchovy.github.io/swarm-viz/" class="product-link" target="_blank" rel="noopener noreferrer">
-                    Learn More <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="product-card">
-                <h3>SubTracker</h3>
-                <p>Free subscription tracker — never miss a renewal. Track costs across all your subscriptions with smart alerts before charges hit. No signup required, runs locally.</p>
-                <a href="https://ezra-anchovy.github.io/sub-tracker/" class="product-link" target="_blank" rel="noopener noreferrer">
                     Learn More <span aria-hidden="true">→</span>
                 </a>
             </article>
@@ -898,12 +840,9 @@
         <div class="footer-section">
             <h4>Products</h4>
             <nav class="footer-links" aria-label="Product links">
+                <a href="#">OneThing</a>
                 <a href="https://revenueback.pages.dev" target="_blank" rel="noopener noreferrer">RevenueBack</a>
                 <a href="https://ezra-anchovy.github.io/oracle-almanac/" target="_blank" rel="noopener noreferrer">Oracle's Almanac</a>
-                <a href="https://ezra-anchovy.github.io/polyreceipts/" target="_blank" rel="noopener noreferrer">PolyReceipts</a>
-                <a href="https://ezra-anchovy.github.io/earnings-forecast/" target="_blank" rel="noopener noreferrer">Earnings Forecast</a>
-                <a href="https://ezra-anchovy.github.io/swarm-viz/" target="_blank" rel="noopener noreferrer">Swarm Viz</a>
-                <a href="https://ezra-anchovy.github.io/sub-tracker/" target="_blank" rel="noopener noreferrer">SubTracker</a>
             </nav>
         </div>
         
