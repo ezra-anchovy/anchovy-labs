@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- VERSION: NO-HEADER-V3 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,61 +122,6 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: 500;
             letter-spacing: -0.02em;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), transparent);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--accent-gold);
-            outline: none;
-        }
-
-        .nav-links a:focus-visible {
-            outline: 2px solid var(--accent-gold);
-            outline-offset: 4px;
         }
 
         /* Hero Section */
@@ -599,29 +545,8 @@
             }
         }
 
-        /* Skip to main content link (accessibility) */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent-gold);
-            color: var(--bg-primary);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            z-index: 2000;
-            font-weight: 600;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
-            nav {
-                padding: 1.25rem 2rem;
-            }
-
             .products,
             .research {
                 padding: 6rem 2rem;
@@ -659,14 +584,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.8125rem;
-            }
-
             .hero {
                 padding: 8rem 1.5rem 4rem;
             }
@@ -700,18 +617,6 @@
         }
 
         @media (max-width: 480px) {
-            nav {
-                padding: 1rem 1.25rem;
-            }
-
-            .logo {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
             .hero {
                 padding: 7rem 1.25rem 3rem;
             }
