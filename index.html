@@ -311,6 +311,14 @@
             flex-grow: 1;
         }
 
+        .product-card p a,
+        .research-card p a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: rgba(201, 169, 98, 0.55);
+            text-underline-offset: 0.16em;
+        }
+
         .product-link {
             color: var(--accent-gold);
             text-decoration: none;
@@ -389,6 +397,51 @@
             color: var(--text-secondary);
             font-size: 0.9375rem;
             line-height: 1.7;
+        }
+
+        .showcase {
+            padding: 0 4rem 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .showcase-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .showcase-card img {
+            display: block;
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            object-position: top center;
+            background: #0f0f0f;
+        }
+
+        .showcase-copy {
+            padding: 1rem 1rem 1.15rem;
+        }
+
+        .showcase-copy h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .showcase-copy p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
 
         /* Philosophy Section (Social Proof) */
@@ -555,8 +608,13 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .products,
-            .research {
+            .research,
+            .showcase {
                 padding: 6rem 2rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .philosophy {
@@ -596,12 +654,14 @@
             }
 
             .products,
-            .research {
+            .research,
+            .showcase {
                 padding: 4rem 1.5rem;
             }
 
             .products-grid,
-            .research-grid {
+            .research-grid,
+            .showcase-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -687,8 +747,45 @@
             </article>
             <article class="product-card">
                 <h3>Anchovy Labs Press</h3>
-                <p>A real product surface, not a side project: six books published in two formats each. Selected titles like <a href="https://a.co/d/01s2Nt6a" target="_blank" rel="noopener noreferrer">Digital Exit</a>, <a href="https://a.co/d/05ZIIU9k" target="_blank" rel="noopener noreferrer">Focus Mastery</a>, and <em>Debt-Free in 90 Days</em> extend the same mission of helping people navigate complex systems with more clarity and agency.</p>
+                <p>A real product surface, not a side project: six books published in two formats each. Selected titles like <a href="https://a.co/d/01s2Nt6a" target="_blank" rel="noopener noreferrer">Digital Exit</a> and <a href="https://a.co/d/05ZIIU9k" target="_blank" rel="noopener noreferrer">Focus Mastery</a> express the same mission of helping people navigate complex systems with more clarity and agency.</p>
                 <a href="press.html" class="product-link">6 books · 12 published editions</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="showcase" aria-labelledby="showcase-heading">
+        <div class="section-header">
+            <h2 id="showcase-heading">A closer look at the product surface</h2>
+            <p>Selected screens from the current app portfolio. The emphasis is on clarity, composure, and helping people act with more confidence inside messy systems.</p>
+        </div>
+        <div class="showcase-grid">
+            <article class="showcase-card">
+                <img src="assets/appshots/qrsafe.png" alt="QRSafe app screenshot">
+                <div class="showcase-copy">
+                    <h3>QRSafe</h3>
+                    <p>Safer QR workflows when context is missing and trust is thin.</p>
+                </div>
+            </article>
+            <article class="showcase-card">
+                <img src="assets/appshots/promptengineer.png" alt="PromptEngineer app screenshot">
+                <div class="showcase-copy">
+                    <h3>PromptEngineer</h3>
+                    <p>Making it easier to turn vague intent into usable instructions.</p>
+                </div>
+            </article>
+            <article class="showcase-card">
+                <img src="assets/appshots/renap.png" alt="Renap app screenshot">
+                <div class="showcase-copy">
+                    <h3>Renap</h3>
+                    <p>Reducing friction in everyday flows that break down under ambiguity.</p>
+                </div>
+            </article>
+            <article class="showcase-card">
+                <img src="assets/appshots/onething.png" alt="OneThing app screenshot">
+                <div class="showcase-copy">
+                    <h3>OneThing</h3>
+                    <p>Lowering cognitive overhead and helping users act on one clear next step.</p>
+                </div>
             </article>
         </div>
     </section>
@@ -709,12 +806,12 @@
                 <p>We use AI where it creates real leverage: clearer interfaces, better assistance, and products that help users act instead of getting stuck.</p>
             </article>
             <article class="research-card">
-                <h3>Durable internal agentic infrastructure</h3>
-                <p>Behind the products is a serious internal systems layer for research, iteration, publishing, and operations. Infrastructure matters because reliability matters.</p>
-            </article>
-            <article class="research-card">
                 <h3>Publishing as product</h3>
                 <p>Anchovy Labs Press extends the same mission in written form: practical material that helps people regain clarity and agency inside confusing systems.</p>
+            </article>
+            <article class="research-card">
+                <h3>Durable internal agentic infrastructure</h3>
+                <p>Behind the products is a serious internal systems layer for research, iteration, publishing, and operations. Infrastructure matters because reliability matters.</p>
             </article>
             <article class="research-card enabler-card">
                 <h3>Science & AI as an enabling layer</h3>
