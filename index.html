@@ -297,9 +297,24 @@
             transform: translateY(-5px);
         }
 
+        .product-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            flex: 0 0 48px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+        }
+
         .product-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             color: var(--text-primary);
         }
 
@@ -726,24 +741,36 @@
         </div>
         <div class="products-grid">
             <article class="product-card">
-                <h3>QRSafe</h3>
+                <div class="product-card-header">
+                    <img class="product-card-icon" src="assets/icons/qrsafe-icon.png" alt="QRSafe app icon">
+                    <h3>QRSafe</h3>
+                </div>
                 <p>A safer, clearer way to navigate QR-driven interactions when context is missing and trust is thin. Built for moments when digital handoffs become needlessly opaque.</p>
-                <span class="product-link">Accessibility app nearing launch</span>
+                <span class="product-link">Accessibility app launching March 2026</span>
             </article>
             <article class="product-card">
-                <h3>PromptEngineer</h3>
+                <div class="product-card-header">
+                    <img class="product-card-icon" src="assets/icons/promptengineer-icon.png" alt="PromptEngineer app icon">
+                    <h3>PromptEngineer</h3>
+                </div>
                 <p>An AI-native tool for turning vague intent into usable instructions so people can get leverage from software instead of fighting it.</p>
-                <span class="product-link">AI-native app nearing launch</span>
+                <span class="product-link">AI-native app launching March 2026</span>
             </article>
             <article class="product-card">
-                <h3>Renap</h3>
+                <div class="product-card-header">
+                    <img class="product-card-icon" src="assets/icons/renap-icon.png" alt="Renap app icon">
+                    <h3>Renap</h3>
+                </div>
                 <p>Software for reducing friction in everyday flows that break down under ambiguity, cognitive load, or poor interface assumptions.</p>
-                <span class="product-link">Accessibility app nearing launch</span>
+                <span class="product-link">Accessibility app launching March 2026</span>
             </article>
             <article class="product-card">
-                <h3>OneThing</h3>
+                <div class="product-card-header">
+                    <img class="product-card-icon" src="assets/icons/onething-icon.png" alt="OneThing app icon">
+                    <h3>OneThing</h3>
+                </div>
                 <p>A calmer focus product for people who need less cognitive overhead, fewer moving parts, and one clear next step at a time.</p>
-                <span class="product-link">Focus app nearing launch</span>
+                <span class="product-link">Accessibility app launching March 2026</span>
             </article>
             <article class="product-card">
                 <h3>Anchovy Labs Press</h3>
