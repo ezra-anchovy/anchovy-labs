@@ -25,7 +25,7 @@
     h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:-.02em}
     a{color:inherit}
     .hero{position:relative;padding:7rem 1.5rem 4rem;min-height:64vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:url('assets/digital-exit-cover.jpg') center/cover no-repeat;opacity:.34;filter:grayscale(.12)}
+    .hero::before{content:'';position:absolute;inset:0;background:url('assets/digital-exit-cover.jpg') center 22%/cover no-repeat;opacity:.34;filter:grayscale(.12)}
     .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(10,10,10,.18) 0%, rgba(10,10,10,.82) 58%, var(--bg) 88%)}
     .hero-inner{position:relative;z-index:1;max-width:920px}
     .eyebrow{color:var(--gold);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
@@ -47,7 +47,7 @@
     .list{display:grid;gap:.8rem;margin-top:.5rem}.list li{margin-left:1.15rem;color:var(--muted)}
     footer{padding:2.5rem 1.5rem 3.5rem;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:#8f8f8f}
     @media (max-width:820px){.thesis-grid{grid-template-columns:1fr}}
-    @media (max-width:640px){.hero{padding-top:6rem}.cta-row{flex-direction:column}.btn{text-align:center;width:100%}}
+    @media (max-width:640px){.hero{padding-top:6rem}.hero::before{background-position:center 14%}.cta-row{flex-direction:column}.btn{text-align:center;width:100%}}
   </style>
 </head>
 <body>
